@@ -1,0 +1,40 @@
+@import '../../styles/colors';
+
+.filterInput:focus,
+.filterInput:hover {
+	border: 2px solid rgb(65, 145, 165);
+	box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.1);
+}
+
+.filterForm {
+	display: flex;
+	flex-direction: column;
+	padding: 10px 40px;
+	margin-top: 10px;
+	border-radius: 3px;
+	border: 1px solid grey;
+	background-color: $white;
+	box-shadow: 2px 4px 5px rgba(0.5, 0.2, 0.3, 0.2);
+}
+
+.Filter-fade-enter {
+	opacity: 0;
+	transform: scale(0.1);
+}
+
+.Filter-fade-enter-active {
+	opacity: 1;
+	transform: scale(1);
+	transition: all 250ms linear;
+}
+
+.Filter-fade-exit {
+	opacity: 1;
+	transform: scale(1);
+}
+
+.Filter-fade-exit-active {
+	opacity: 0;
+	transform: scale(0.1);
+	transition: all 250ms linear;
+}

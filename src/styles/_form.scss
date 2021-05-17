@@ -1,0 +1,44 @@
+@import "./colors";
+
+.Form__input {
+	max-width: 100%;
+	margin-bottom: 30px;
+	outline: none;
+	padding: 5px 15px;
+}
+
+.Form__input:focus,
+.Form__input:hover {
+	border: 2px solid rgb(65, 145, 165);
+	box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.1);
+}
+
+.Form {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 10px 40px;
+	border: 1px solid grey;
+	border-radius: 3px;
+	box-shadow: 2px 4px 5px rgba(0.5, 0.2, 0.3, 0.2);
+	background-color: $white;
+}
+
+.Form__button {
+	cursor: pointer;
+	width: 100%;
+	padding: 8px 16px;
+	background-color: $blue;
+	color: white;
+	border: none;
+	border-radius: 3px;
+
+	&:focus,
+	&:hover {
+		background-color: $blue-accent;
+	}
+}
+
+.Label {
+	padding-bottom: 8px;
+}

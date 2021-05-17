@@ -1,0 +1,14 @@
+@import "./colors.scss";
+
+.Title {
+	color: $blue;
+}
+
+.Title-SlideIn-appear {
+	transform: translateX(-100%);
+}
+
+.Title-SlideIn-appear-active {
+	transform: translateX(0);
+	transition: transform 500ms linear;
+}

@@ -1,0 +1,18 @@
+.IconButton {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0;
+	padding: 8px;
+	border: none;
+	border-radius: 3px;
+	color: white;
+	font: inherit;
+	background-color: rgba(221, 59, 18, 0.644);
+	cursor: pointer;
+
+	&:focus,
+	&:hover {
+		background-color: red;
+	}
+}

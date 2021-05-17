@@ -1,0 +1,57 @@
+.ContactList {
+	margin: 10px 0;
+	padding: 0;
+	list-style-type: square;
+	background-color: $white;
+}
+
+.ContactList__item {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 5px;
+	border-radius: 3px;
+	box-shadow: 2px 4px 5px rgba(0.5, 0.2, 0.2, 0.2);
+	border: 1px solid rgba(118, 168, 214, 0.829);
+	background-color: rgb(195, 222, 235);
+}
+
+.ContactList__item:not(:last-child) {
+	margin-bottom: 5px;
+}
+
+.ContactList__item-fade-enter {
+	transform: translateX(-100%);
+	opacity: 0;
+}
+
+.ContactList__item-fade-enter-done {
+	transform: translateX(0);
+	opacity: 1;
+}
+
+.ContactList__item-fade-enter-active {
+	transform: translateX(0);
+	transition: all 250ms linear;
+	opacity: 1;
+}
+
+.ContactList__item-fade-exit {
+	transform: translateX(0);
+	opacity: 1;
+}
+
+.ContactList__item-fade-exit-active {
+	transform: translateX(-100%);
+	transition: all 250ms linear;
+	opacity: 0;
+}
+
+.ContactList__name {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.ContactList__button {
+	margin-left: auto;
+}
