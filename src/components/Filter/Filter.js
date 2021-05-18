@@ -1,3 +1,4 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import './Filter.scss';
 import { CSSTransition } from 'react-transition-group';
