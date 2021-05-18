@@ -14,7 +14,7 @@ const styles = {
   },
 };
 
-const HomeView = () => (
+const HomePage = () => (
   <div style={styles.container}>
     <h1 style={styles.title}>
       Wellcome{' '}
@@ -25,4 +25,4 @@ const HomeView = () => (
   </div>
 );
 
-export default HomeView;
+export default HomePage;

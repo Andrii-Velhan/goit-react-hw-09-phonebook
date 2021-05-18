@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { authOperations } from '../redux/auth';
 import Logo from '../components/Logo';
-class RegisterView extends Component {
+class RegisterPage extends Component {
   state = {
     name: '',
     email: '',
@@ -72,4 +72,4 @@ const mapDispatchToProps = {
   onRegister: authOperations.register,
 };
 
-export default connect(null, mapDispatchToProps)(RegisterView);
+export default connect(null, mapDispatchToProps)(RegisterPage);

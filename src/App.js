@@ -7,10 +7,10 @@ import { connect } from 'react-redux';
 import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
 import Spinner from './components/Spinner';
-const HomeView = lazy(() => import('./views/HomeView'));
-const RegisterView = lazy(() => import('./views/RegisterView'));
-const LoginView = lazy(() => import('./views/LoginView'));
-const PhoneBookPage = lazy(() => import('./views/PhoneBookPage'));
+const HomePage = lazy(() => import('./pages/HomePage'));
+const RegisterPage = lazy(() => import('./pages/RegisterPage'));
+const LoginPage = lazy(() => import('./pages/LoginPage'));
+const PhoneBookPage = lazy(() => import('./pages/PhoneBookPage'));
 class App extends Component {
   componentDidMount() {
     this.props.onGetCurretnUser();
@@ -23,18 +23,18 @@ class App extends Component {
 
         <Suspense fallback={<Spinner />}>
           <Switch>
-            <PublicRoute exact path="/" restricted component={HomeView} />
+            <PublicRoute exact path="/" restricted component={HomePage} />
             <PublicRoute
               path="/register"
               restricted
               redirectTo="/contacts"
-              component={RegisterView}
+              component={RegisterPage}
             />
             <PublicRoute
               path="/login"
               restricted
               redirectTo="/contacts"
-              component={LoginView}
+              component={LoginPage}
             />
             <PrivateRoute
               path="/contacts"

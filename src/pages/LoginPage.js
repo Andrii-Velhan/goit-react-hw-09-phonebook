@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { authOperations } from '../redux/auth';
 import Logo from '../components/Logo';
-class LoginView extends Component {
+class LoginPage extends Component {
   state = {
     email: '',
     password: '',
@@ -63,4 +63,4 @@ const mapDispatchToProps = {
   onLogin: authOperations.logIn,
 };
 
-export default connect(null, mapDispatchToProps)(LoginView);
+export default connect(null, mapDispatchToProps)(LoginPage);
