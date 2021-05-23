@@ -1,16 +1,20 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import './ContactList.css';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import IconButton from '../IconButton';
 import { ReactComponent as DeleteIcon } from '../../icons/delete.svg';
-import { connect } from 'react-redux';
 import { phoneBookSelectors, phoneBookOperations } from '../../redux/phoneBook';
 
-const ContactList = ({ items, onRemoveContact }) => {
+export default function ContactList() {
+	const dispatch = useDispatch();
+	const items = useSelector(phoneBookSelectors.getVisibleContacts);
+	const onRemoveContact = id => dispatch(phoneBookOperations.removeContact(id));
+
   return (
     <TransitionGroup component="ul" className="ContactList">
-      {items.map(({ id, name, number }) => (
+			{items.map(({ id, name, number }, i) => (
         <CSSTransition
           key={id}
           timeout={250}
@@ -18,7 +22,7 @@ const ContactList = ({ items, onRemoveContact }) => {
         >
           <li key={id} className="ContactList__item">
             <p className="ContactList__name">
-              {name}: {number}
+							{i + 1}. {name}: {number}
             </p>
 
             <IconButton
@@ -40,12 +44,12 @@ ContactList.propTypes = {
   onRemoveContact: PropTypes.func,
 };
 
-const mapStateToProps = state => ({
-  items: phoneBookSelectors.getVisibleContacts(state),
-});
+// const mapStateToProps = state => ({
+//   items: phoneBookSelectors.getVisibleContacts(state),
+// });
 
-const mapDispatchToProps = dispatch => ({
-  onRemoveContact: id => dispatch(phoneBookOperations.removeContact(id)),
-});
+// const mapDispatchToProps = dispatch => ({
+//   onRemoveContact: id => dispatch(phoneBookOperations.removeContact(id)),
+// });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ContactList);
+// export default connect(mapStateToProps, mapDispatchToProps)(ContactList);

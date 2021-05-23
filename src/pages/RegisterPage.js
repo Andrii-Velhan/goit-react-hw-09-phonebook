@@ -1,75 +1,158 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { authOperations } from '../redux/auth';
 import Logo from '../components/Logo';
-class RegisterPage extends Component {
-  state = {
-    name: '',
-    email: '',
-    password: '',
-  };
+// import { connect } from 'react-redux';
 
-  handleChange = ({ target: { name, value } }) => {
-    this.setState({ [name]: value });
-  };
+export default function LoginPage() {
+	const dispatch = useDispatch();
 
-  handleSubmit = e => {
-    e.preventDefault();
+	const [name, setName] = useState('');
+	const [email, setEmail] = useState('');
+	const [password, setPassword] = useState('');
 
-    this.props.onRegister(this.state);
+	const handleChange = evt => {
+		const { name, value } = evt.target;
 
-    this.setState({ name: '', email: '', password: '' });
-  };
+		switch (name) {
+			case 'name':
+				setName(value);
+				break;
 
-  render() {
-    const { name, email, password } = this.state;
+			case 'email':
+				setEmail(value);
+				break;
 
-    return (
-      <div>
-        <Logo title="Enter your data" />
+			case 'password':
+				setPassword(value);
+				break;
 
-        <form onSubmit={this.handleSubmit} className="Form" autoComplete="off">
-          <label className="Label" htmlFor="name">
-            Name
-          </label>
-          <input
-            type="text"
-            name="name"
-            className="Form__input"
-            value={name}
-            onChange={this.handleChange}
-          />
-          <label className="Label" htmlFor="email">
-            Mail
-          </label>
-          <input
-            type="email"
-            name="email"
-            className="Form__input"
-            value={email}
-            onChange={this.handleChange}
-          />
-          <label className="Label" htmlFor="password">
-            Password
-          </label>{' '}
-          <input
-            type="password"
-            name="password"
-            className="Form__input"
-            value={password}
-            onChange={this.handleChange}
-          />
-          <button type="submit" className="Form__button">
-            Registration
-          </button>
-        </form>
-      </div>
-    );
-  }
+			default:
+				console.warn(`Тип поля ${name} не обрабатывается!`);
+		}
+	}
+
+	const handleSubmit = evt => {
+		evt.preventDefault();
+		// alert(`${name}, ${email}, ${password}`);
+		dispatch(authOperations.register({ name, email, password }));
+		setName('');
+		setEmail('');
+		setPassword('');
+	}
+
+	return (
+		<div>
+			<Logo title="Enter your data" />
+
+			<form onSubmit={handleSubmit} className="Form" autoComplete="off">
+				<label className="Label" htmlFor="name">
+					Name
+			  </label>
+				<input
+					type="text"
+					name="name"
+					className="Form__input"
+					value={name}
+					onChange={handleChange}
+				/>
+
+				<label className="Label" htmlFor="email">
+					Email
+			</label>
+				<input
+					type="email"
+					name="email"
+					className="Form__input"
+					value={email}
+					onChange={handleChange}
+				/>
+
+				<label className="Label" htmlFor="password">
+					Password
+			</label>
+				<input
+					type="password"
+					name="password"
+					className="Form__input"
+					value={password}
+					onChange={handleChange}
+				/>
+
+				<button type="submit" className="Form__button">
+					Log in
+			</button>
+			</form>
+		</div>)
 }
+// class RegisterPage extends Component {
+// 	state = {
+// 		name: '',
+// 		email: '',
+// 		password: '',
+// 	};
 
-const mapDispatchToProps = {
-  onRegister: authOperations.register,
-};
+// 	handleChange = ({ target: { name, value } }) => {
+// 		this.setState({ [name]: value });
+// 	};
 
-export default connect(null, mapDispatchToProps)(RegisterPage);
+// 	handleSubmit = e => {
+// 		e.preventDefault();
+
+// 		this.props.onRegister(this.state);
+
+// 		this.setState({ name: '', email: '', password: '' });
+// 	};
+
+// 	render() {
+// 		const { name, email, password } = this.state;
+
+// 		return (
+// 			<div>
+// 				<Logo title="Enter your data" />
+
+// 				<form onSubmit={this.handleSubmit} className="Form" autoComplete="off">
+// 					<label className="Label" htmlFor="name">
+// 						Name
+//           </label>
+// 					<input
+// 						type="text"
+// 						name="name"
+// 						className="Form__input"
+// 						value={name}
+// 						onChange={this.handleChange}
+// 					/>
+// 					<label className="Label" htmlFor="email">
+// 						Mail
+//           </label>
+// 					<input
+// 						type="email"
+// 						name="email"
+// 						className="Form__input"
+// 						value={email}
+// 						onChange={this.handleChange}
+// 					/>
+// 					<label className="Label" htmlFor="password">
+// 						Password
+//           </label>{' '}
+// 					<input
+// 						type="password"
+// 						name="password"
+// 						className="Form__input"
+// 						value={password}
+// 						onChange={this.handleChange}
+// 					/>
+// 					<button type="submit" className="Form__button">
+// 						Registration
+//           </button>
+// 				</form>
+// 			</div>
+// 		);
+// 	}
+// }
+
+// const mapDispatchToProps = {
+// 	onRegister: authOperations.register,
+// };
+
+// export default connect(null, mapDispatchToProps)(RegisterPage);

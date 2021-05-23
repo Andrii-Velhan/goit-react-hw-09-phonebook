@@ -1,63 +1,71 @@
 import React, { useState } from 'react';
-import {useDispatch} from 'react-redux'
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux'
 import { authOperations } from '../redux/auth';
 import Logo from '../components/Logo';
+// import { connect } from 'react-redux';
 
-export default function LoginPage () {
-const dispatch = useDispatch();
+export default function LoginPage() {
+	const dispatch = useDispatch();
 
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 
-	const updateEmail = evt => {
-		setEmail(evt.target.value);
-	};
+	const handleChange = evt => {
+		const { name, value } = evt.target;
 
-	const updatePassword = evt => {
-		setPassword(evt.target.value);
+		switch (name) {
+			case 'email':
+				setEmail(value);
+				break;
+
+			case 'password':
+				setPassword(value);
+				break;
+			default:
+				console.warn(`Тип поля ${name} не обрабатывается`);
+		}
 	}
 
 	const handleSubmit = evt => {
 		evt.preventDefault();
 		// alert(`${email}, ${password}`);
-		dispatch(authOperations.logIn({email, password}));
+		dispatch(authOperations.logIn({ email, password }));
 		setEmail('');
 		setPassword('');
 	}
 
 	return (
-	<div>
-		<Logo title="Enter your data" />
+		<div>
+			<Logo title="Enter your data" />
 
-		<form	onSubmit={handleSubmit} className="Form" autoComplete="off">
-			<label className="Label" htmlFor="email">
-				Email
+			<form onSubmit={handleSubmit} className="Form" autoComplete="off">
+				<label className="Label" htmlFor="email">
+					Email
 			</label>
-			<input
-				type="email"
-				name="email"
-				className="Form__input"
-				value={email}
-				onChange={updateEmail}
-			/>
+				<input
+					type="email"
+					name="email"
+					className="Form__input"
+					value={email}
+					onChange={handleChange}
+				/>
 
-			<label className="Label" htmlFor="password">
-				Password
+				<label className="Label" htmlFor="password">
+					Password
 			</label>
-			<input
-				type="password"
-				name="password"
-				className="Form__input"
-				value={password}
-				onChange={updatePassword}
-			/>
+				<input
+					type="password"
+					name="password"
+					className="Form__input"
+					value={password}
+					onChange={handleChange}
+				/>
 
-			<button type="submit" className="Form__button">
-				Log in
+				<button type="submit" className="Form__button">
+					Log in
 			</button>
-		</form>
-	</div>)
+			</form>
+		</div>)
 }
 
 // class LoginPage extends Component {

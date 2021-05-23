@@ -1,7 +1,7 @@
 import { createSelector } from '@reduxjs/toolkit';
 
 const getAllItems = state => state.phoneBook.items;
-const getLoading = state => state.phoneBook.items;
+const getLoading = state => state.phoneBook.loading;
 const getFilter = state => state.phoneBook.filter;
 
 // without memoisation:
@@ -19,23 +19,23 @@ const getFilter = state => state.phoneBook.filter;
 
 // with memoisation:
 const getVisibleContacts = createSelector(
-  [getAllItems, getFilter],
-  (items, filter) => {
-    const normalizedFilter = filter.toLowerCase();
+	[getAllItems, getFilter],
+	(items, filter) => {
+		const normalizedFilter = filter.toLowerCase();
 
-    let list = items.filter(({ name }) =>
-      name.toLowerCase().includes(normalizedFilter),
-    );
+		let list = items.filter(({ name }) =>
+			name.toLowerCase().includes(normalizedFilter),
+		);
 
-    return list;
-  },
+		return list;
+	},
 );
 
 const phoneBookSelectors = {
-  getAllItems,
-  getLoading,
-  getFilter,
-  getVisibleContacts,
+	getAllItems,
+	getLoading,
+	getFilter,
+	getVisibleContacts,
 };
 
 export default phoneBookSelectors;

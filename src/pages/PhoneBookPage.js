@@ -9,47 +9,40 @@ import Filter from '../components/Filter';
 import Logo from '../components/Logo';
 import { connect } from 'react-redux';
 import { phoneBookOperations, phoneBookSelectors } from '../redux/phoneBook';
-
-const barStyles = {
-  // display: 'flex',
-  // alignItems: 'flex-end',
-  // marginBottom: 20,
-};
-
 class PhoneBookPage extends Component {
-  componentDidMount() {
-    this.props.fetchContacts();
-  }
+	componentDidMount() {
+		this.props.fetchContacts();
+	}
 
-  render() {
-    return (
-      <Container>
-        <div style={barStyles}>
-          <Logo title="Phonebook" />
+	render() {
+		return (
+			<Container>
 
-          <ContactForm />
+				<Logo title="Phonebook" />
 
-          <Filter />
-        </div>
-        {this.props.isLoadingContacts && <Spinner />}
+				<ContactForm />
 
-        <ContactList />
-      </Container>
-    );
-  }
+				<Filter />
+
+				{this.props.isLoadingContacts && <Spinner />}
+
+				<ContactList />
+			</Container>
+		);
+	}
 }
 
 PhoneBookPage.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.object),
+	items: PropTypes.arrayOf(PropTypes.object),
 };
 
 const mapStateToProps = state => ({
-  items: phoneBookSelectors.getAllItems(state),
-  isLoadingContacts: phoneBookSelectors.getLoading(state),
+	items: phoneBookSelectors.getAllItems(state),
+	isLoadingContacts: phoneBookSelectors.getLoading(state),
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchContacts: () => dispatch(phoneBookOperations.fetchContacts()),
+	fetchContacts: () => dispatch(phoneBookOperations.fetchContacts()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PhoneBookPage);
