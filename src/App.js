@@ -21,33 +21,41 @@ export default function App() {
 	}, [dispatch]);
 
 	return (
-      <Container>
-        <AppBar />
+		<Container>
+			<AppBar />
 
-        <Suspense fallback={<Spinner />}>
-          <Switch>
-							<PublicRoute exact path="/" restricted component={HomePage} />
-            <PublicRoute
-              path="/register"
-              restricted
-              redirectTo="/contacts"
-              component={RegisterPage}
-            />
-            <PublicRoute
-              path="/login"
-              restricted
-              redirectTo="/contacts"
-              component={LoginPage}
-            />
-            <PrivateRoute
-              path="/contacts"
-              redirectTo="/login"
-              component={PhoneBookPage}
-            />
-          </Switch>
-        </Suspense>
-      </Container>
-    );
+			<Suspense fallback={<Spinner />}>
+				<Switch>
+					<PublicRoute exact path="/" >
+						<HomePage />
+					</PublicRoute>
+
+					<PublicRoute
+						path="/register"
+						restricted
+						redirectTo="/contacts"
+					>
+						<RegisterPage />
+					</PublicRoute >
+
+					<PublicRoute
+						path="/login"
+						restricted
+						redirectTo="/contacts"
+					>
+						<LoginPage />
+					</PublicRoute>
+
+					<PrivateRoute
+						path="/contacts"
+						redirectTo="/login"
+					><PhoneBookPage />
+					</PrivateRoute >
+
+				</Switch>
+			</Suspense>
+		</Container>
+	);
 
 }
 
