@@ -5,11 +5,22 @@ import { connect } from 'react-redux';
 import { phoneBookSelectors, phoneBookOperations } from '../../redux/phoneBook';
 // import { useSelector, useDispatch } from 'react-redux';
 
+// const mapStateToProps = state => ({
+// 	items: phoneBookSelectors.getAllItems(state),
+// });
+
+// const mapDispatchToProps = dispatch => ({
+// 	onSubmit: (name, number) =>
+// 		dispatch(phoneBookOperations.addContact({ name, number })),
+// });
+
+// export default connect(mapStateToProps, mapDispatchToProps)(ContactForm);
+//---------- ---------
 // export default function ContactForm() {
+// 	const dispatch = useDispatch();
 // 	const [name, setName] = useState('');
 // 	const [number, setNumber] = useState('');
-// 	const [message, setMessage] = useState('');
-// 	const dispatch = useDispatch();
+// 	const [message, setMessage] = useState(null);
 
 // 	const items = useSelector(phoneBookSelectors.getAllItems);
 // 	const onSubmit = (name, number) => dispatch(phoneBookOperations.addContact(name, number))

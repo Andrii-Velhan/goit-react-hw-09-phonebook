@@ -4,19 +4,6 @@ import './Filter.scss';
 import { CSSTransition } from 'react-transition-group';
 import { useSelector, useDispatch } from 'react-redux';
 import { phoneBookSelectors, changeFilter } from '../../redux/phoneBook';
-
-// const mapStateToProps = state => ({
-// 	value: phoneBookSelectors.getFilter(state),
-// 	items: phoneBookSelectors.getAllItems(state),
-// });
-
-// const mapDispatchToProps = dispatsh => ({
-// 	onChangeFilter: e => dispatsh(changeFilter(e.target.value)),
-// 	onClearFilter: e => dispatsh(changeFilter('')),
-// });
-
-// export default connect(mapStateToProps, mapDispatchToProps)(Filter);
-
 export default function Filter() {
 	const dispatch = useDispatch();
 	const value = useSelector(phoneBookSelectors.getFilter);
@@ -50,9 +37,19 @@ export default function Filter() {
 }
 
 Filter.propTypes = {
-  value: PropTypes.string,
+	value: PropTypes.string,
   onChangeFilter: PropTypes.func,
   items: PropTypes.arrayOf(PropTypes.object),
 };
 
+// const mapStateToProps = state => ({
+// 	value: phoneBookSelectors.getFilter(state),
+// 	items: phoneBookSelectors.getAllItems(state),
+// });
 
+// const mapDispatchToProps = dispatsh => ({
+// 	onChangeFilter: e => dispatsh(changeFilter(e.target.value)),
+// 	onClearFilter: e => dispatsh(changeFilter('')),
+// });
+
+// export default connect(mapStateToProps, mapDispatchToProps)(Filter);
