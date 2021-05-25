@@ -3,6 +3,7 @@ import { createSelector } from '@reduxjs/toolkit';
 const getAllItems = state => state.phoneBook.items;
 const getLoading = state => state.phoneBook.loading;
 const getFilter = state => state.phoneBook.filter;
+const getError = state => state.phoneBook.error;
 
 // without memoisation:
 // const getVisibleContacts = state => {
@@ -36,6 +37,7 @@ const phoneBookSelectors = {
 	getLoading,
 	getFilter,
 	getVisibleContacts,
+	getError,
 };
 
 export default phoneBookSelectors;

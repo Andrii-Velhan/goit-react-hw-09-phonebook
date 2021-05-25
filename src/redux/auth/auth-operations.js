@@ -100,6 +100,7 @@ const getCurrentUser = () => async (dispatch, getState) => {
     dispatch(authActions.getCurrentUserSuccess(response.data));
   } catch (error) {
     dispatch(authActions.getCurrentUserError(error.message));
+		dispatch(authActions.logoutSuccess());
   }
 };
 
