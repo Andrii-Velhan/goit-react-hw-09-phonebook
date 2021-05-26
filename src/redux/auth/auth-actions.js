@@ -19,18 +19,18 @@ const getCurrentUserError = createAction('auth/getCurrentUserError');
 const clearError = createAction('auth/clearError')
 
 const authActions = {
-  registerRequest,
-  registerSuccess,
-  registerError,
-  logoutRequest,
-  logoutSuccess,
-  logoutError,
-  loginRequest,
-  loginSuccess,
-  loginError,
-  getCurrentUserRequest,
-  getCurrentUserSuccess,
-  getCurrentUserError,
+	registerRequest,
+	registerSuccess,
+	registerError,
+	logoutRequest,
+	logoutSuccess,
+	logoutError,
+	loginRequest,
+	loginSuccess,
+	loginError,
+	getCurrentUserRequest,
+	getCurrentUserSuccess,
+	getCurrentUserError,
 	clearError,
 };
 

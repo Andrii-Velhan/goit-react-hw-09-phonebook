@@ -68,7 +68,7 @@ import { phoneBookSelectors, phoneBookOperations } from '../../redux/phoneBook';
 
 // 		if (
 // 			items.find((item) => item.name.toLowerCase() === name.toLowerCase())) {
-// 			saveMessage(`Contact ${name} is аlready exists!`);
+// 			saveMessage(`Contact '${name}' is аlready exists!`);
 // 			return;
 // 		}
 
@@ -179,7 +179,7 @@ class ContactForm extends Component {
 				item => item.name.toLowerCase() === name.toLowerCase(),
 			)
 		) {
-			this.setMessage(`Contact ${name} is аlready exists!`);
+			this.setMessage(`Contact '${name}' is аlready exists!`);
 			return;
 		}
 		this.props.onSubmit(name, number);

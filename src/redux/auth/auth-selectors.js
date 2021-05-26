@@ -9,8 +9,8 @@ const getToken = state => state.auth.token;
 const getLoading = state => state.auth.loading;
 
 const authSelectors = {
-  getIsAuthenticated,
-  getUsername,
+	getIsAuthenticated,
+	getUsername,
 	getError,
 	getToken,
 	getLoading

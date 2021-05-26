@@ -1,14 +1,14 @@
 import axios from 'axios';
 import {
-  addContactRequest,
-  addContactSuccess,
-  addContactError,
-  removeContactRequest,
-  removeContactSuccess,
-  removeContactError,
-  fetchContactsRequest,
-  fetchContactsSuccess,
-  fetchContactsError,
+	addContactRequest,
+	addContactSuccess,
+	addContactError,
+	removeContactRequest,
+	removeContactSuccess,
+	removeContactError,
+	fetchContactsRequest,
+	fetchContactsSuccess,
+	fetchContactsError,
 } from './phoneBook-actions';
 
 // const fetchContacts = () => dispatch => {
@@ -23,35 +23,35 @@ import {
 //! const fetchContacts with try/catch; async/await :
 
 const fetchContacts = () => async dispatch => {
-  dispatch(fetchContactsRequest());
+	dispatch(fetchContactsRequest());
 
-  try {
-    const { data } = await axios.get('/contacts');
+	try {
+		const { data } = await axios.get('/contacts');
 
-    dispatch(fetchContactsSuccess(data));
-  } catch (error) {
-    dispatch(fetchContactsError(error.message));
-  }
+		dispatch(fetchContactsSuccess(data));
+	} catch (error) {
+		dispatch(fetchContactsError(error.message));
+	}
 };
 
 const addContact = ({ name, number }) => dispatch => {
-  const item = { name, number };
+	const item = { name, number };
 
-  dispatch(addContactRequest);
+	dispatch(addContactRequest);
 
-  axios
-    .post('/contacts', item)
-    .then(({ data }) => dispatch(addContactSuccess(data)))
-    .catch(error => dispatch(addContactError(error.message)));
+	axios
+		.post('/contacts', item)
+		.then(({ data }) => dispatch(addContactSuccess(data)))
+		.catch(error => dispatch(addContactError(error.message)));
 };
 
 const removeContact = contactId => dispatch => {
-  dispatch(removeContactRequest());
+	dispatch(removeContactRequest());
 
-  axios
-    .delete(`/contacts/${contactId}`)
-    .then(() => dispatch(removeContactSuccess(contactId)))
-    .catch(error => dispatch(removeContactError(error.message)));
+	axios
+		.delete(`/contacts/${contactId}`)
+		.then(() => dispatch(removeContactSuccess(contactId)))
+		.catch(error => dispatch(removeContactError(error.message)));
 };
 
 const phoneBookOperations = { fetchContacts, addContact, removeContact };

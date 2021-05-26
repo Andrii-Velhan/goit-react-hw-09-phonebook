@@ -1,16 +1,16 @@
 import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
 import {
-  addContactRequest,
-  addContactSuccess,
-  addContactError,
-  removeContactRequest,
-  removeContactSuccess,
-  removeContactError,
-  fetchContactsRequest,
-  fetchContactsSuccess,
-  fetchContactsError,
-  changeFilter,
+	addContactRequest,
+	addContactSuccess,
+	addContactError,
+	removeContactRequest,
+	removeContactSuccess,
+	removeContactError,
+	fetchContactsRequest,
+	fetchContactsSuccess,
+	fetchContactsError,
+	changeFilter,
 	clearError,
 } from './phoneBook-actions';
 
@@ -23,25 +23,25 @@ const initialState = {
 
 const items = createReducer(initialState.items, {
 	[fetchContactsSuccess]: (_, { payload }) => payload,
-  [addContactSuccess]: (state, { payload }) => [payload, ...state],
-  [removeContactSuccess]: (state, { payload }) =>
-    state.filter(({ id }) => id !== payload),
+	[addContactSuccess]: (state, { payload }) => [payload, ...state],
+	[removeContactSuccess]: (state, { payload }) =>
+		state.filter(({ id }) => id !== payload),
 });
 
 const loading = createReducer(initialState.loading, {
-  [fetchContactsRequest]: () => true,
-  [fetchContactsSuccess]: () => false,
-  [fetchContactsError]: () => false,
-  [addContactRequest]: () => true,
-  [addContactSuccess]: () => false,
-  [addContactError]: () => false,
-  [removeContactRequest]: () => true,
-  [removeContactSuccess]: () => false,
-  [removeContactError]: () => false,
+	[fetchContactsRequest]: () => true,
+	[fetchContactsSuccess]: () => false,
+	[fetchContactsError]: () => false,
+	[addContactRequest]: () => true,
+	[addContactSuccess]: () => false,
+	[addContactError]: () => false,
+	[removeContactRequest]: () => true,
+	[removeContactSuccess]: () => false,
+	[removeContactError]: () => false,
 });
 
 const filter = createReducer(initialState.filter, {
-  [changeFilter]: (_, { payload }) => payload,
+	[changeFilter]: (_, { payload }) => payload,
 });
 
 const setError = (_, { payload }) => payload;
@@ -54,8 +54,8 @@ const error = createReducer(initialState.error, {
 });
 
 export default combineReducers({
-  items,
-  filter,
-  loading,
-  error,
+	items,
+	filter,
+	loading,
+	error,
 });

@@ -12,36 +12,36 @@ export default function ContactList() {
 	const items = useSelector(phoneBookSelectors.getVisibleContacts);
 	const onRemoveContact = id => dispatch(phoneBookOperations.removeContact(id));
 
-  return (
-    <TransitionGroup component="ul" className="ContactList">
+	return (
+		<TransitionGroup component="ul" className="ContactList">
 			{items.map(({ id, name, number }, i) => (
-        <CSSTransition
-          key={id}
-          timeout={250}
-          classNames="ContactList__item-fade"
-        >
-          <li key={id} className="ContactList__item">
-            <p className="ContactList__name">
+				<CSSTransition
+					key={id}
+					timeout={250}
+					classNames="ContactList__item-fade"
+				>
+					<li key={id} className="ContactList__item">
+						<p className="ContactList__name">
 							{i + 1}. {name}: {number}
-            </p>
+						</p>
 
-            <IconButton
-              className="ContactList__button"
-              onClick={() => onRemoveContact(id)}
-              aria-label="Remove Contact"
-            >
-              <DeleteIcon width="12" height="12" fill="#fff" />
-            </IconButton>
-          </li>
-        </CSSTransition>
-      ))}
-    </TransitionGroup>
-  );
+						<IconButton
+							className="ContactList__button"
+							onClick={() => onRemoveContact(id)}
+							aria-label="Remove Contact"
+						>
+							<DeleteIcon width="12" height="12" fill="#fff" />
+						</IconButton>
+					</li>
+				</CSSTransition>
+			))}
+		</TransitionGroup>
+	);
 };
 
 ContactList.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.object),
-  onRemoveContact: PropTypes.func,
+	items: PropTypes.arrayOf(PropTypes.object),
+	onRemoveContact: PropTypes.func,
 };
 
 // const mapStateToProps = state => ({

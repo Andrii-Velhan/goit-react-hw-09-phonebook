@@ -38,8 +38,8 @@ export default function Filter() {
 
 Filter.propTypes = {
 	value: PropTypes.string,
-  onChangeFilter: PropTypes.func,
-  items: PropTypes.arrayOf(PropTypes.object),
+	onChangeFilter: PropTypes.func,
+	items: PropTypes.arrayOf(PropTypes.object),
 };
 
 // const mapStateToProps = state => ({
