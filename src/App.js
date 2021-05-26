@@ -26,7 +26,9 @@ export default function App() {
 
 			<Suspense fallback={<Spinner />}>
 				<Switch>
-					<PublicRoute exact path="/" >
+					<PublicRoute exact path="/"
+						restricted
+						redirectTo="/contacts" >
 						<HomePage />
 					</PublicRoute>
 
