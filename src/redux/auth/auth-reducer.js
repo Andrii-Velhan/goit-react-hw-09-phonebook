@@ -15,6 +15,7 @@ const token = createReducer(null, {
 	[authActions.registerSuccess]: (_, { payload }) => payload.token,
 	[authActions.loginSuccess]: (_, { payload }) => payload.token,
 	[authActions.logoutSuccess]: () => null,
+	// [authActions.getCurrentUserError]: () => null,
 });
 
 const setError = (_, { payload }) => payload;

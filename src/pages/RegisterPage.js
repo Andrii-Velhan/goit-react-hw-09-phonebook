@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { authOperations } from '../redux/auth';
 import Logo from '../components/Logo';
-// import { connect } from 'react-redux';
+import Spinner from '../components/Spinner';
+import Notification from '../components/Notification';
+import authSelectors from '../redux/auth/auth-selectors';
+
 
 export default function LoginPage() {
 	const dispatch = useDispatch();
@@ -10,6 +13,9 @@ export default function LoginPage() {
 	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+
+	const error = useSelector(authSelectors.getError);
+	const isLoadingAuth = useSelector(authSelectors.getLoading);
 
 	const handleChange = evt => {
 		const { name, value } = evt.target;
@@ -44,6 +50,12 @@ export default function LoginPage() {
 	return (
 		<div>
 			<Logo title="Enter your data" />
+
+			<Notification
+				message={error}
+			/>
+
+			{isLoadingAuth && <Spinner />}
 
 			<form onSubmit={handleSubmit} className="Form" autoComplete="off">
 				<label className="Label" htmlFor="name">
