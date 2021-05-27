@@ -16,7 +16,7 @@ export default function App() {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		console.log('useEffect заменяющий componentDidMount');
+		// console.log('useEffect заменяющий componentDidMount');
 		dispatch(authOperations.getCurrentUser())
 	}, [dispatch]);
 
