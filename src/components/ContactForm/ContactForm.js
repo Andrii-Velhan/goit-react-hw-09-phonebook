@@ -10,7 +10,7 @@ export default function ContactForm() {
 	const [message, setMessage] = useState(null);
 
 	const items = useSelector(phoneBookSelectors.getAllItems);
-	const onSubmit = (name, number) => dispatch(phoneBookOperations.addContact({ name, number }))
+	const onSubmit = (name, number) => dispatch(phoneBookOperations.addContact({ name, number }));
 
 	const saveMessage = (note) => {
 		setMessage(note);
