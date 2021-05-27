@@ -28,7 +28,8 @@ const fetchContacts = () => async dispatch => {
 	try {
 		const { data } = await axios.get('/contacts');
 
-		dispatch(fetchContactsSuccess(data));
+		dispatch(fetchContactsSuccess(data.sort((a, b) => parseFloat(a.name) - parseFloat(b.name))));
+		console.log(data);
 	} catch (error) {
 		dispatch(fetchContactsError(error.message));
 	}
