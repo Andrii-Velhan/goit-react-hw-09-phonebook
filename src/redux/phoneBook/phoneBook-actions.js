@@ -15,4 +15,5 @@ export const removeContactError = createAction('contacts/removeContactError');
 // export const removeContact = createAction('contacts/remove');
 
 export const changeFilter = createAction('contacts/changeFilter');
+
 export const clearError = createAction('contacts/clearError');

@@ -13,6 +13,7 @@ import {
 	changeFilter,
 	clearError,
 } from './phoneBook-actions';
+import authActions from '../../redux/auth/auth-actions'
 
 const initialState = {
 	items: [],
@@ -26,6 +27,7 @@ const items = createReducer(initialState.items, {
 	[addContactSuccess]: (state, { payload }) => [payload, ...state],
 	[removeContactSuccess]: (state, { payload }) =>
 		state.filter(({ id }) => id !== payload),
+	[authActions.logoutSuccess]: () => [],
 });
 
 const loading = createReducer(initialState.loading, {
